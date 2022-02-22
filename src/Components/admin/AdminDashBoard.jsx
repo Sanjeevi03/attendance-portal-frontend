@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { List, ListItem, ListItemButton, ListItemIcon } from "@mui/material";
 import SchoolIcon from '@mui/icons-material/School';
 import HomeIcon from '@mui/icons-material/Home';
@@ -13,8 +13,17 @@ import ClassIcon from '@mui/icons-material/Class';
 import PeopleIcon from '@mui/icons-material/People';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {decodeToken } from "react-jwt";
 function AdminDashBoard() {
-  var a= "admin";
+  const navigate = useNavigate()
+  // token value
+  var data = localStorage.getItem('token')
+  const decodedToken = decodeToken(data);
+  console.log(decodedToken);
+  const handleLogout = async ()=>{
+    await localStorage.removeItem('token')
+    navigate('/')
+  }
   return (
      <>
     <Box sx={{ flexGrow: 1 }}>
@@ -28,9 +37,9 @@ function AdminDashBoard() {
             sx={{ mr: 2 }}>
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Welcome <strong> {a}</strong>
+            Welcome <strong> {decodedToken.username}</strong>
           </Typography>
-          <Button color="inherit" variant="outlined">LogOut</Button>
+          <Button color="inherit" variant="outlined" onClick={handleLogout}>Logout</Button>
         </Toolbar>
       </AppBar>
     </Box>
@@ -114,7 +123,7 @@ function AdminDashBoard() {
 
           {/* Admin Logout Button */}
           {/* <Link t style={{color:'white',textDecoration:'none'}}> */}
-          <ListItem disablePadding>
+          <ListItem disablePadding onClick={handleLogout}>
             <ListItemButton sx={{p:1,py:2}}>
               <ListItemIcon>
                 <LogoutIcon sx={{color:'white'}}/>
