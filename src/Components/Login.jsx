@@ -26,7 +26,7 @@ function Login() {
   const handleSubmitAdmin = (e)=>{
     setadminLogin({...adminLogin,[e.target.name]:e.target.value})
   }
-  console.log(adminLogin);
+
   // axios to login
   const handleAdminLogin = async (e) =>{
     e.preventDefault();
