@@ -21,6 +21,9 @@ import NoteAltIcon from "@mui/icons-material/NoteAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { decodeToken } from "react-jwt";
 import EventNoteIcon from "@mui/icons-material/EventNote";
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+
 function AdminDashBoard() {
   const navigate = useNavigate();
   // token value
@@ -31,17 +34,12 @@ function AdminDashBoard() {
     navigate("/");
   };
   // sideBar hide and show
-  const[sideBar,setSideBar] = React.useState(false);
-  window.addEventListener('resize',()=>{
-    let a = window.screen.width;
-    if(a<900){
-      setSideBar(true)
-    }
-    else if(a>=900){
-    setSideBar(false)
-   }
-  })
-  console.log(sideBar);
+  const openMenu = ()=>{
+    document.querySelector('.sidebar').classList.add('open')
+  }
+  const closeMenu = ()=>{
+    document.querySelector('.sidebar').classList.remove('open')
+  }
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -53,7 +51,8 @@ function AdminDashBoard() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
-            ></IconButton>
+              onClick={openMenu}
+            ><MenuIcon/></IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Welcome <strong> {decodedToken.username}</strong>
             </Typography>
@@ -63,24 +62,22 @@ function AdminDashBoard() {
           </Toolbar>
         </AppBar>
       </Box>
-      <Grid container >
-        <Grid item lg={3} md={3} sm={3} xs={2} >
-          <Box
+      <aside className="sidebar">
+      
+      <Box
             sx={{
               background: "#2C364C",
               px: 2,
-              py: 1,
-              display: "flex",
-              flexDirection: "column",
-              minHeight:'90.23vh'}}>
+              py: 1,height:'99%'}}>
             <nav>
+            <span className="close-icon" onClick={closeMenu}><CloseIcon/></span>
               <List sx={{ color: "white" }}>
                 {/* Admin Home Button */}
                 <Link
                   to="/admin"
                   style={{ color: "white", textDecoration: "none" }}
                 >
-                  <ListItem disablePadding>
+                  <ListItem disablePadding onClick={closeMenu}>
                     <ListItemButton sx={{ p: 1, py: 2 }}>
                       <ListItemIcon>
                         <HomeIcon sx={{ color: "white" }} />
@@ -96,7 +93,7 @@ function AdminDashBoard() {
                 <Link
                   to="/admin/newstaff"
                   style={{ color: "white", textDecoration: "none" }}>
-                  <ListItem disablePadding>
+                  <ListItem disablePadding onClick={closeMenu}>
                     <ListItemButton sx={{ p: 1, py: 2 }}>
                       <ListItemIcon>
                         <SchoolIcon sx={{ color: "white" }} />
@@ -112,7 +109,7 @@ function AdminDashBoard() {
                 <Link
                   to="/admin/viewstaff"
                   style={{ color: "white", textDecoration: "none" }}>
-                  <ListItem disablePadding>
+                  <ListItem disablePadding onClick={closeMenu}>
                     <ListItemButton sx={{ p: 1, py: 2 }}>
                       <ListItemIcon>
                         <ClassIcon sx={{ color: "white" }} />
@@ -129,7 +126,7 @@ function AdminDashBoard() {
                   to="/admin/modifystaff"
                   style={{ color: "white", textDecoration: "none" }}
                 >
-                  <ListItem disablePadding>
+                  <ListItem disablePadding onClick={closeMenu}>
                     <ListItemButton sx={{ p: 1, py: 2 }}>
                       <ListItemIcon>
                         <PeopleIcon sx={{ color: "white" }} />
@@ -144,9 +141,8 @@ function AdminDashBoard() {
                 {/* Admin View Attendance Button */}
                 <Link
                   to="/admin/adminview"
-                  style={{ color: "white", textDecoration: "none" }}
-                >
-                  <ListItem disablePadding>
+                  style={{ color: "white", textDecoration: "none" }}>
+                  <ListItem disablePadding onClick={closeMenu}>
                     <ListItemButton sx={{ p: 1, py: 2 }}>
                       <ListItemIcon>
                         <EventNoteIcon sx={{ color: "white" }} />
@@ -161,9 +157,8 @@ function AdminDashBoard() {
                 {/* Admin Change Password Button */}
                 <Link
                   to="/admin/adminpsw"
-                  style={{ color: "white", textDecoration: "none" }}
-                >
-                  <ListItem disablePadding>
+                  style={{ color: "white", textDecoration: "none" }}>
+                  <ListItem disablePadding onClick={closeMenu}>
                     <ListItemButton sx={{ p: 1, py: 2 }}>
                       <ListItemIcon>
                         <NoteAltIcon sx={{ color: "white" }} />
@@ -194,13 +189,12 @@ function AdminDashBoard() {
               </span> */}
             </nav>
           </Box>
-        </Grid> 
-        <Grid item lg={9} md={9} sm={9} sx={{backgroundColor:'#f0f2f5'}} >
-          <Box sx={{mt:5}}>
-          <Outlet />
-          </Box>
-        </Grid>
-      </Grid>
+      </aside>
+      <div onClick={closeMenu} className="sidebar-close-button ">
+      <Box  sx={{height:'100vh',backgroundColor:'#f0f2f5'}}>
+        <Outlet />
+      </Box>
+      </div>
     </>
   );
 }

@@ -31,8 +31,8 @@ function AddNewStaff() {
     toast.success("New Staff Added Succesfully")
   }
   return <>
-    <Box  sx={{backgroundColor:'#f0f2f5',width:'100%',mt:4,pb:4}}>
-      <Typography sx={{textAlign:'center',fontFamily:'Ubuntu',mb:2}}>Add New Staff</Typography>
+   <Box sx={{ width: "100%", pb: 4 }}>
+   <Typography sx={{textAlign:'center',fontFamily:'Ubuntu',mb:2}}>Add New Staff</Typography>
       <Box sx={{display:'flex',justifyContent:'center'}}>
         <form>
         <table>
@@ -70,10 +70,12 @@ function AddNewStaff() {
           </tr>
           </tbody>
         </table>
-      {staffDetail.staffID!=='' && staffDetail.staffName!=='' && staffDetail.staffEmail!=='' && staffDetail.staffBranch!=='' && staffDetail.staffPassword!=='' ?<><button className="addstaff-button" type="submit" onClick={handleSubmit}>Add</button></>:<button className="addstaff-dis-button" disabled>Add</button>}
+        <div style={{position:'static'}}>
+      {staffDetail.staffID!=='' && staffDetail.staffName!=='' && staffDetail.staffEmail!=='' && staffDetail.staffBranch!=='' && staffDetail.staffPassword!=='' ?<><button className="addstaff-button" type="submit" onClick={handleSubmit}>Add</button></>:<button title="Please Fill All the fields" className="addstaff-dis-button" disabled>Add</button>}
+      </div>
       </form>
       </Box>
-    </Box>
+      </Box>
   </>;
 }
 

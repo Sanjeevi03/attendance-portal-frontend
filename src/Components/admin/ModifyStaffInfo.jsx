@@ -6,7 +6,7 @@ function AdminModifyStaffInfo() {
     <>
      <Box sx={{ width: "100%", mt: 4, pb: 4 }}>
         <Typography sx={{ textAlign: "center", fontFamily: "Ubuntu", mb: 2 }}>
-          Home
+          Modify
         </Typography>
         <Box sx={{ mx: 2, display: "flex", justifyContent: "center" }}></Box>
       </Box></>

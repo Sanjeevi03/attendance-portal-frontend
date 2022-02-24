@@ -4,7 +4,7 @@ import React from "react";
 function AdminViewAttendance() {
   return (
     <>
-      <Box sx={{ width: "100%", mt: 4, pb: 4 }}>
+      <Box sx={{ width: "100%", pb: 4 }}>
         <Typography sx={{ textAlign: "center", fontFamily: "Ubuntu", mb: 2 }}>
           Home
         </Typography>

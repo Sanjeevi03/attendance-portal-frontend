@@ -40,7 +40,23 @@ code {
 .addstaff-fromInputBox:focus {
   border-bottom: 2px solid #1876d1;
 }
-.addstaff-button,
+.addstaff-button{
+  outline: none;
+  border: none;
+  background: none;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+  border-radius: 5px;
+  
+  background-color: #069861;
+  
+  color: white;
+}
 .addstaff-dis-button {
   outline: none;
   border: none;
@@ -53,12 +69,28 @@ code {
   justify-content: center;
   margin-top: 1em;
   border-radius: 5px;
-  background-color: #069861;
-  color: white;
-}
-.addstaff-dis-button {
-  opacity: 50%;
+  background-color: #3dbf8e;
+  cursor:not-allowed;
 }
 .addstaff-button:hover {
   width: 120px;
+}
+
+
+
+.sidebar {
+  position: absolute;
+  transition: all 0.8s;
+  transform: translateX(-30rem);
+  width: 15.5rem;
+  height: 100%;
+}
+.sidebar.open {
+  transform: translateX(0);
+}
+.close-icon{
+  position: absolute;
+  right:1rem;
+  color: white;
+  font-weight: 600;
 }
