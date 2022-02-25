@@ -6,10 +6,10 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import axios from "axios";
 function ViewStaff() {
+  
   // GETTING STAFF DETAILS FROM DB
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -19,9 +19,10 @@ function ViewStaff() {
     };
     loadData();
   }, []);
+  
   return (
     <>
-      <Box sx={{ width: "100%", pb: 4 }}>
+      <Box sx={{ width: "100%", pt:6,pb: 4 }}>
         <Typography sx={{ textAlign: "center", fontFamily: "Ubuntu", mb: 2 }}>
           Staff Details
         </Typography>

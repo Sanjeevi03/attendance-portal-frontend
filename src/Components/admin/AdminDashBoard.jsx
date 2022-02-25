@@ -1,28 +1,22 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
-  Grid,
-  List,
-  ListItem,
+  List,Box,AppBar,
+  Button,
+  ListItem,Typography,Toolbar,
   ListItemButton,
   ListItemIcon,
 } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
 import HomeIcon from "@mui/icons-material/Home";
 import ClassIcon from "@mui/icons-material/Class";
-import PeopleIcon from "@mui/icons-material/People";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { decodeToken } from "react-jwt";
 import EventNoteIcon from "@mui/icons-material/EventNote";
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 function AdminDashBoard() {
   const navigate = useNavigate();
@@ -34,12 +28,12 @@ function AdminDashBoard() {
     navigate("/");
   };
   // sideBar hide and show
-  const openMenu = ()=>{
-    document.querySelector('.sidebar').classList.add('open')
-  }
-  const closeMenu = ()=>{
-    document.querySelector('.sidebar').classList.remove('open')
-  }
+  const openMenu = () => {
+    document.querySelector(".sidebar").classList.add("open");
+  };
+  const closeMenu = () => {
+    document.querySelector(".sidebar").classList.remove("open");
+  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -52,7 +46,9 @@ function AdminDashBoard() {
               aria-label="menu"
               sx={{ mr: 2 }}
               onClick={openMenu}
-            ><MenuIcon/></IconButton>
+            >
+              <MenuIcon />
+            </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Welcome <strong> {decodedToken.username}</strong>
             </Typography>
@@ -63,137 +59,124 @@ function AdminDashBoard() {
         </AppBar>
       </Box>
       <aside className="sidebar">
-      
-      <Box
-            sx={{
-              background: "#2C364C",
-              px: 2,
-              py: 1,height:'99%'}}>
-            <nav>
-            <span className="close-icon" onClick={closeMenu}><CloseIcon/></span>
-              <List sx={{ color: "white" }}>
-                {/* Admin Home Button */}
-                <Link
-                  to="/admin"
-                  style={{ color: "white", textDecoration: "none" }}
-                >
-                  <ListItem disablePadding onClick={closeMenu}>
-                    <ListItemButton sx={{ p: 1, py: 2 }}>
-                      <ListItemIcon>
-                        <HomeIcon sx={{ color: "white" }} />
-                      </ListItemIcon>
-                      <Typography sx={{ fontFamily: "Nunito" }}>
-                        Home
-                      </Typography>
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-
-                {/* Admin NewBranch Button */}
-                <Link
-                  to="/admin/newstaff"
-                  style={{ color: "white", textDecoration: "none" }}>
-                  <ListItem disablePadding onClick={closeMenu}>
-                    <ListItemButton sx={{ p: 1, py: 2 }}>
-                      <ListItemIcon>
-                        <SchoolIcon sx={{ color: "white" }} />
-                      </ListItemIcon>
-                      <Typography sx={{ fontFamily: "Nunito" }}>
-                        Add New Staff
-                      </Typography>
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-
-                {/* Admin view staff Button */}
-                <Link
-                  to="/admin/viewstaff"
-                  style={{ color: "white", textDecoration: "none" }}>
-                  <ListItem disablePadding onClick={closeMenu}>
-                    <ListItemButton sx={{ p: 1, py: 2 }}>
-                      <ListItemIcon>
-                        <ClassIcon sx={{ color: "white" }} />
-                      </ListItemIcon>
-                      <Typography sx={{ fontFamily: "Nunito" }}>
-                        View all Staff
-                      </Typography>
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-
-                {/* Admin Add Staff Button */}
-                <Link
-                  to="/admin/modifystaff"
-                  style={{ color: "white", textDecoration: "none" }}
-                >
-                  <ListItem disablePadding onClick={closeMenu}>
-                    <ListItemButton sx={{ p: 1, py: 2 }}>
-                      <ListItemIcon>
-                        <PeopleIcon sx={{ color: "white" }} />
-                      </ListItemIcon>
-                      <Typography sx={{ fontFamily: "Nunito" }}>
-                        Modify Staff
-                      </Typography>
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-
-                {/* Admin View Attendance Button */}
-                <Link
-                  to="/admin/adminview"
-                  style={{ color: "white", textDecoration: "none" }}>
-                  <ListItem disablePadding onClick={closeMenu}>
-                    <ListItemButton sx={{ p: 1, py: 2 }}>
-                      <ListItemIcon>
-                        <EventNoteIcon sx={{ color: "white" }} />
-                      </ListItemIcon>
-                      <Typography sx={{ fontFamily: "Nunito" }}>
-                        View Attendance
-                      </Typography>
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-
-                {/* Admin Change Password Button */}
-                <Link
-                  to="/admin/adminpsw"
-                  style={{ color: "white", textDecoration: "none" }}>
-                  <ListItem disablePadding onClick={closeMenu}>
-                    <ListItemButton sx={{ p: 1, py: 2 }}>
-                      <ListItemIcon>
-                        <NoteAltIcon sx={{ color: "white" }} />
-                      </ListItemIcon>
-                      <Typography sx={{ fontFamily: "Nunito" }}>
-                        Change Password
-                      </Typography>
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-
-                {/* Admin Logout Button */}
-                {/* <Link t style={{color:'white',textDecoration:'none'}}> */}
-                <ListItem disablePadding onClick={handleLogout}>
+        <Box
+          sx={{
+            background: "#2C364C",
+            px: 2,
+            py: 1,
+            height: "99%",
+          }}
+        >
+          <span className="close-icon" onClick={closeMenu}>
+            <CloseIcon />
+          </span>
+          <nav>
+            <List sx={{ color: "white",mt:2 }}>
+              {/* Admin Home Button */}
+              <Link
+                to="/admin"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                <ListItem disablePadding onClick={closeMenu}>
                   <ListItemButton sx={{ p: 1, py: 2 }}>
                     <ListItemIcon>
-                      <LogoutIcon sx={{ color: "white" }} />
+                      <HomeIcon sx={{ color: "white" }} />
+                    </ListItemIcon>
+                    <Typography sx={{ fontFamily: "Nunito" }}>Home</Typography>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+
+              {/* Admin NewBranch Button */}
+              <Link
+                to="/admin/newstaff"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                <ListItem disablePadding onClick={closeMenu}>
+                  <ListItemButton sx={{ p: 1, py: 2 }}>
+                    <ListItemIcon>
+                      <SchoolIcon sx={{ color: "white" }} />
                     </ListItemIcon>
                     <Typography sx={{ fontFamily: "Nunito" }}>
-                      Logout
+                      Add New Staff
                     </Typography>
                   </ListItemButton>
                 </ListItem>
-                {/* </Link> */}
-              </List>
-              {/* <span style={{color:'white',position:'relative',top:'5em'}}>
+              </Link>
+
+              {/* Admin view staff Button */}
+              <Link
+                to="/admin/viewstaff"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                <ListItem disablePadding onClick={closeMenu}>
+                  <ListItemButton sx={{ p: 1, py: 2 }}>
+                    <ListItemIcon>
+                      <ClassIcon sx={{ color: "white" }} />
+                    </ListItemIcon>
+                    <Typography sx={{ fontFamily: "Nunito" }}>
+                      View all Staff
+                    </Typography>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+
+              {/* Admin View Attendance Button */}
+              <Link
+                to="/admin/adminview"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                <ListItem disablePadding onClick={closeMenu}>
+                  <ListItemButton sx={{ p: 1, py: 2 }}>
+                    <ListItemIcon>
+                      <EventNoteIcon sx={{ color: "white" }} />
+                    </ListItemIcon>
+                    <Typography sx={{ fontFamily: "Nunito" }}>
+                      View Attendance
+                    </Typography>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+
+              {/* Admin Change Password Button */}
+              <Link
+                to="/admin/adminpsw"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                <ListItem disablePadding onClick={closeMenu}>
+                  <ListItemButton sx={{ p: 1, py: 2 }}>
+                    <ListItemIcon>
+                      <NoteAltIcon sx={{ color: "white" }} />
+                    </ListItemIcon>
+                    <Typography sx={{ fontFamily: "Nunito" }}>
+                      Change Password
+                    </Typography>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+
+              {/* Admin Logout Button */}
+              {/* <Link t style={{color:'white',textDecoration:'none'}}> */}
+              <ListItem disablePadding onClick={handleLogout}>
+                <ListItemButton sx={{ p: 1, py: 2 }}>
+                  <ListItemIcon>
+                    <LogoutIcon sx={{ color: "white" }} />
+                  </ListItemIcon>
+                  <Typography sx={{ fontFamily: "Nunito" }}>Logout</Typography>
+                </ListItemButton>
+              </ListItem>
+              {/* </Link> */}
+            </List>
+            {/* <span style={{color:'white',position:'relative',top:'5em'}}>
                 Admin
               </span> */}
-            </nav>
-          </Box>
+          </nav>
+        </Box>
       </aside>
       <div onClick={closeMenu} className="sidebar-close-button ">
-      <Box  sx={{height:'100vh',backgroundColor:'#f0f2f5'}}>
-        <Outlet />
-      </Box>
+        <Box sx={{ height: "93vh", backgroundColor: "#f0f2f5" }}>
+          <Outlet />
+        </Box>
       </div>
     </>
   );

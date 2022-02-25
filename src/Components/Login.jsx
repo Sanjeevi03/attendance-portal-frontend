@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import attendanceImage from '../assets/attendanceImage.jpeg'
+import attendanceImage from './assets/attendanceImage.jpeg'
 import { Box } from "@mui/system";
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from '@mui/styles';
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
@@ -22,29 +23,43 @@ function Login() {
     setExpanded(newExpanded ? panel : false);
   };
   // admin login
-  const [adminLogin,setadminLogin] = useState({username:'',password:''})
-  const handleSubmitAdmin = (e)=>{
-    setadminLogin({...adminLogin,[e.target.name]:e.target.value})
+  const [state,setState] = useState({adminusername:'',adminpassword:'',staffid:'',staffpassword:''})
+  const handleLoginChange = (e)=>{
+    setState({...state,[e.target.name]:e.target.value})
   }
-
   // axios to login
   const handleAdminLogin = async (e) =>{
     e.preventDefault();
     try{
       const response = await axios.post('http://localhost:8000/adminlogin',{
-        username:adminLogin.username,
-        password:adminLogin.password
+        username:state.adminusername,
+        password:state.adminpassword
       })
       if(response.data){
         await localStorage.setItem("token",response.data);
         navigate('/admin')
       }
-      
     }
     catch(err){
-      console.log(err);
+      toast.error("Invalid Username or Password")
     }
-
+  }
+  // axios to staff login
+  const handleStaffLogin = async (e) =>{
+    e.preventDefault();
+    try{
+      const response = await axios.post('http://localhost:8000/stafflogin',{
+        staffid:state.staffid,
+        staffpassword:state.staffpassword
+      })
+      if(response.data){
+        await localStorage.setItem("staff-token",response.data);
+        navigate('/staff')
+      }
+    }
+     catch(err){
+        toast.error("Invalid Staff ID or Password")
+      }
   }
   return (
     <>
@@ -75,8 +90,8 @@ function Login() {
             <Typography sx={{color:'white',fontWeight:'600',mx:14,fontFamily:'Ubuntu',my:0.5}}>Admin Login</Typography>
           </AccordionSummary>
           <AccordionDetails sx={{mx:7,mt:2}}>
-            <TextField name="username" value={adminLogin.username} onChange={handleSubmitAdmin}label='Username' type='text' sx={{m:1,width:'230px'}}/> <br />
-            <TextField name="password" value={adminLogin.password} onChange={handleSubmitAdmin}label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
+            <TextField name="adminusername" value={state.adminusername} onChange={handleLoginChange}label='Username' type='text' sx={{m:1,width:'230px'}}/> <br />
+            <TextField name="adminpassword" value={state.adminpassword} onChange={handleLoginChange}label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
             <Button onClick={handleAdminLogin} variant="contained" sx={{mx:9,my:1,px:4}}>Login</Button>
           </AccordionDetails>
         </Accordion>
@@ -89,9 +104,9 @@ function Login() {
             <Typography sx={{color:'white',fontWeight:'600',mx:14,fontFamily:'Ubuntu',my:0.5}}>Staff Login</Typography>
           </AccordionSummary>
           <AccordionDetails sx={{mx:7,mt:2}}>
-            <TextField label='Username' type='text' sx={{m:1,width:'230px'}}/> <br />
-            <TextField label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
-            <Button variant="contained" sx={{mx:9,my:1,px:4}}>Login</Button>
+            <TextField name="staffid" value={state.staffid} onChange={handleLoginChange} label='Staff ID' type='text' sx={{m:1,width:'230px'}}/> <br />
+            <TextField name="staffpassword" value={state.staffpassword} onChange={handleLoginChange} label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
+            <Button onClick={handleStaffLogin} variant="contained" sx={{mx:9,my:1,px:4}}>Login</Button>
           </AccordionDetails>
         </Accordion>
 

@@ -40,12 +40,12 @@ code {
 .addstaff-fromInputBox:focus {
   border-bottom: 2px solid #1876d1;
 }
-.addstaff-button{
+.addstaff-button {
   outline: none;
   border: none;
   background: none;
-  width: 100px;
-  height: 30px;
+  width: 110px;
+  height: 35px;
   display: flex;
   margin: auto;
   align-items: center;
@@ -53,16 +53,16 @@ code {
   margin-top: 1em;
   border-radius: 5px;
   
-  background-color: #069861;
-  
+  background-color: #3dbf8e;
   color: white;
+
 }
 .addstaff-dis-button {
   outline: none;
   border: none;
   background: none;
-  width: 100px;
-  height: 30px;
+  width: 110px;
+  height: 35px;
   display: flex;
   margin: auto;
   align-items: center;
@@ -70,13 +70,14 @@ code {
   margin-top: 1em;
   border-radius: 5px;
   background-color: #3dbf8e;
-  cursor:not-allowed;
+  cursor: not-allowed;
 }
 .addstaff-button:hover {
-  width: 120px;
+  width: 130px;
+  opacity: 100%;
+  background-color:#2bad7c;
+  font-weight:600;
 }
-
-
 
 .sidebar {
   position: absolute;
@@ -88,9 +89,106 @@ code {
 .sidebar.open {
   transform: translateX(0);
 }
-.close-icon{
+.close-icon {
   position: absolute;
-  right:1rem;
+  right: 1rem;
   color: white;
   font-weight: 600;
+  cursor: pointer;
+}
+.close-icon:hover {
+  color: red;
+}
+
+.profile-icon {
+  width: 140px;
+  border-radius: 50%;
+}
+.profile-field {
+  width: 180px;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 4px;
+  background-color: rgb(226, 226, 226);
+}
+.radio-btn{
+  margin: 15px;
+  padding:5px;
+}
+
+.studstaff-button{
+  outline: none;
+  border: none;
+  background: none;
+  width: 150px;
+  height: 43px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+  border-radius: 5px;
+  background-image: linear-gradient(to right,#d587de,#d344e3);
+  color: white;
+  font-weight: 600;
+}
+.studstaff-dis-button{
+  outline: none;
+  border: none;
+  background: none;
+  width: 150px;
+  height: 43px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+  border-radius: 5px;
+  background: rgb(189, 188, 188);
+  color:rgb(240, 236, 236);
+  cursor:not-allowed;
+}
+
+.studstaff-button:hover{
+  background-image: linear-gradient(to left,#d587de,#d344e3);
+}
+
+.change-input{
+  outline: none;
+  border:none;
+  background: none;
+  border-radius: 4px;
+  width: 150px;
+  height: 32px;
+  margin-left:14px;
+  background-color: #dbdbdb;
+  font-size:15px;
+  padding-left:10px;
+}
+
+.chg-psw-btn{
+  outline: none;
+  border:none;
+  background: none;
+  border-radius: 4px;
+  width: 180px;
+  height:34px;
+  background-color: #2c80d4;
+  color: white;
+  cursor: pointer;
+}
+.chg-psw-btn:hover{
+  font-weight: 600;
+  background-color: #1876D1;
+}
+.chg-dis-psw-btn{
+  outline: none;
+  border:none;
+  background: none;
+  border-radius: 4px;
+  width: 180px;
+  height:34px;
+  background-color: #bacfe3;
+  color: white;
+  cursor: not-allowed;
 }

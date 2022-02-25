@@ -20,6 +20,7 @@ function AddNewStaff() {
  // adding data to DB
   const handleSubmit = async(e)=>{  
     e.preventDefault()
+   try{
     await axios.post('http://localhost:8000/addstaff',{
       staffid:staffDetail.staffID,
       staffname:staffDetail.staffName,
@@ -29,10 +30,14 @@ function AddNewStaff() {
     })
     setstaffDetail({ staffID:'SID',staffName:'',staffEmail:'',staffBranch:'',staffPassword:''})
     toast.success("New Staff Added Succesfully")
+   }
+   catch(err){
+    toast.error("Staff ID already Exists")
+   }
   }
   return <>
    <Box sx={{ width: "100%", pb: 4 }}>
-   <Typography sx={{textAlign:'center',fontFamily:'Ubuntu',mb:2}}>Add New Staff</Typography>
+   <Typography sx={{textAlign:'center',fontFamily:'Ubuntu',mb:2,pt:6,textDecoration:'underline'}}>Add New Staff</Typography>
       <Box sx={{display:'flex',justifyContent:'center'}}>
         <form>
         <table>

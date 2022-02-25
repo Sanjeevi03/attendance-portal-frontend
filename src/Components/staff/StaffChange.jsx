@@ -7,11 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
 
-function AdminChangePsw() {
+function StaffChange() {
   // token value
-  var data = localStorage.getItem("token");
+  var data = localStorage.getItem("staff-token");
   const decodedToken = decodeToken(data);
-  console.log(decodedToken);
   const [state,setState] = useState({old:'',new:''})
   const handleChange=(e)=>{
       setState({...state,[e.target.name]:e.target.value})
@@ -20,8 +19,8 @@ function AdminChangePsw() {
   //onclick
   const handleSubmit = async ()=>{
     try{
-      await axios.put('http://localhost:8000/adminchangepsw',{
-      old:state.old,new:state.new,username:decodedToken.username
+      await axios.put('http://localhost:8000/staffchangepsw',{
+      old:state.old,new:state.new,staffid:decodedToken.staffid
     })
     setState({old:'',new:''})
     toast.success("Password Updated Successfully")
@@ -29,7 +28,6 @@ function AdminChangePsw() {
     catch(err){
       toast.error("Old Password is Incorrect")
     }
-    
   }
   return (
     <>
@@ -53,11 +51,11 @@ function AdminChangePsw() {
            <br /> <br />
          </tbody>
        </table> 
-       {state.old!=='' && state.new!=='' && state.new.length>=4?<button className="chg-psw-btn" onClick={handleSubmit} sx={{px:2,py:1}} >Change My Password</button>:<button className="chg-dis-psw-btn" disabled sx={{px:2,py:1}} >Change My Password</button>}
+          {state.old!=='' && state.new!=='' ?<button className="chg-psw-btn" onClick={handleSubmit} sx={{px:2,py:1}} >Change My Password</button>:<button className="chg-dis-psw-btn" disabled sx={{px:2,py:1}} >Change My Password</button>}
         </Box>
       </Box>
     </>
   );
 }
 
-export default AdminChangePsw;
+export default StaffChange;
