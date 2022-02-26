@@ -16,6 +16,11 @@ import ViewLeaveForm from "./Components/staff/ViewLeaveForm";
 import StaffChange from "./Components/staff/StaffChange";
 import StaffProfile from "./Components/staff/StaffProfile";
 import StudentDashBoard from "./Components/student/StudentDashBoard";
+import ViewStudent from "./Components/staff/ViewStudent";
+import StudentProfile from './Components/student/StudentProfile'
+import StudentChange from "./Components/student/StudentChange";
+import ApplyLeave from "./Components/student/ApplyLeave";
+import StudentViewAttendance from "./Components/student/StudentViewAttendance";
 function App() {
   return (
     <>
@@ -31,16 +36,21 @@ function App() {
         </Route>
         {/* STAFF ROUTES */}
         <Route path="/staff" element={<StaffDashBoard />}>
-          <Route path="" element={<StaffHome />} />
+        <Route path="" element={<StaffProfile />} />
           <Route path="/staff/newstudent" element={<AddStudent />} />
           <Route path="/staff/markattendance" element={<MarkAttendance />} />
           <Route path="/staff/viewattendance" element={<ViewAttendance />} />
           <Route path="/staff/viewleave" element={<ViewLeaveForm />} />
           <Route path="/staff/staffpsw" element={<StaffChange />} />
-          <Route path="/staff/myprofile" element={<StaffProfile />} />
+          
+          <Route path='/staff/viewstudent' element={<ViewStudent/>}/>
         </Route>
         {/* STUDENT ROUTES */}
         <Route path='/student' element={<StudentDashBoard/>}>
+        <Route path="" element={<StudentProfile />} />
+        <Route path="/student/viewattendance" element={<StudentViewAttendance />} />
+        <Route path="/student/leave" element={<ApplyLeave />} />
+        <Route path="/student/changepsw" element={<StudentChange/>} />
           
         </Route>
       </Routes>

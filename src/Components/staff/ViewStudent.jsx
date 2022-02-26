@@ -15,8 +15,11 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
-import {  TableHead, Typography } from '@mui/material';
+import { Button, TableHead, Typography } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 function TablePaginationActions(props) {
 
@@ -84,15 +87,43 @@ TablePaginationActions.propTypes = {
 
 export default function CustomPaginationActionsTable() {
    //Get
-   
-const [data,setData] = React.useState([])
-  React.useEffect(()=>{
-    const loadData = async ()=>{
-      const res = await axios.get('http://localhost:8000/viewleave')
-      setData(res.data)
-    }
-    loadData();
-  },[])
+   const [data,setData] = React.useState([])
+   React.useEffect(()=>{
+   const loadData = async()=>{
+      const response = await axios.get('http://localhost:8000/viewstudent')
+      setData(response.data)
+   }
+   loadData()
+},[data])
+// deleting
+const handleDelete = async(regno,name)=>{
+   Swal.fire({
+      title:`Are you sure to delete ${name} ?`,
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+         try{
+             axios.delete('http://localhost:8000/delete',{headers: {
+               regno:regno   
+             }})
+         }
+         catch(err){
+            toast.error("Try Again")
+         }
+        Swal.fire(
+          'Deleted!',
+          `${name} has deleted.`,
+          'success'
+        )
+      }
+    })
+  
+}
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -111,7 +142,7 @@ const [data,setData] = React.useState([])
   return (
      <>
      <Box sx={{mx:2}}>
-      <Typography sx={{textAlign:'center',fontFamily:'Ubuntu',mb:2,pt:4}}>Leave Applications</Typography>
+      <Typography sx={{textAlign:'center',fontFamily:'Ubuntu',mb:2,pt:4}}>Student Details</Typography>
 
     <TableContainer component={Paper} sx={{mt:6}}>
 
@@ -121,9 +152,12 @@ const [data,setData] = React.useState([])
     <TableCell sx={{fontWeight:'600'}}>S.No</TableCell>
     <TableCell sx={{fontWeight:'600'}} >Reg No</TableCell>
     <TableCell sx={{fontWeight:'600'}} >Name</TableCell>
-    <TableCell sx={{fontWeight:'600'}} >From</TableCell>
-    <TableCell sx={{fontWeight:'600'}} >To</TableCell>
-    <TableCell sx={{fontWeight:'600'}} >Message</TableCell>
+    <TableCell sx={{fontWeight:'600'}} >Email</TableCell>
+    <TableCell sx={{fontWeight:'600'}} >Gender</TableCell>
+    <TableCell sx={{fontWeight:'600'}} >Date of Birth</TableCell>
+    <TableCell sx={{fontWeight:'600'}} >Mobile No</TableCell>
+    <TableCell sx={{fontWeight:'600'}} >Course</TableCell>
+    <TableCell sx={{fontWeight:'600'}} >Delete</TableCell>
   </TableRow>
 </TableHead>
         <TableBody>
@@ -134,10 +168,15 @@ const [data,setData] = React.useState([])
             <TableRow key={i}>
               <TableCell>{i+1}</TableCell>
                <TableCell >{row.regno}</TableCell>
-               <TableCell >{row.name}</TableCell>
-               <TableCell >{row.fromdate}</TableCell>
-               <TableCell >{row.todate}</TableCell>
-               <TableCell >{row.message}</TableCell>
+               <TableCell >{row.studentname}</TableCell>
+               <TableCell >{row.studentemail}</TableCell>
+               <TableCell >{row.studentgender}</TableCell>
+               <TableCell >{row.studentdob}</TableCell>
+               <TableCell >{row.studentmobile}</TableCell>
+               <TableCell >{row.studentcourse}</TableCell>
+               <TableCell >
+                  <Button onClick={()=>handleDelete(row.regno,row.studentname)} color="error"><DeleteIcon/></Button>
+               </TableCell>
             </TableRow>
           ))}
 

@@ -52,7 +52,7 @@ code {
   justify-content: center;
   margin-top: 1em;
   border-radius: 5px;
-  
+  cursor: pointer;
   background-color: #3dbf8e;
   color: white;
 
@@ -131,6 +131,7 @@ code {
   background-image: linear-gradient(to right,#d587de,#d344e3);
   color: white;
   font-weight: 600;
+  cursor: pointer;
 }
 .studstaff-dis-button{
   outline: none;
@@ -191,4 +192,37 @@ code {
   background-color: #bacfe3;
   color: white;
   cursor: not-allowed;
+}
+.add-atten{
+  outline: none;
+  border: none;
+  width: 80px;
+  height: 30px;
+  background: none;
+  border-radius: 4px;
+  font-weight: bolder;
+  background-color:#2bad7c;
+  color: white;
+  cursor: pointer;
+  margin-left:10px;
+}
+.stud-button{
+  outline: none;
+  border: none;
+  background: none;
+  width: 150px;
+  height: 43px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+  border-radius: 5px;
+  background-image: linear-gradient(to right,#6c80bd,#1d4ee0);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+textarea{
+  border-radius: 4px;
 }

@@ -3,20 +3,15 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
-  FormControlLabel,
-  FormGroup,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   Menu,
   MenuItem,
-  Select,
-  Switch,
 } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
 import HomeIcon from "@mui/icons-material/Home";
@@ -32,7 +27,6 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 function StaffDashBoard() {
   const navigate = useNavigate();
   //app bar
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleMenu = (event) => {
@@ -78,7 +72,6 @@ function StaffDashBoard() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Welcome <strong>{decodedToken.staffname}</strong>
           </Typography>
-          {auth && (
             <div>
               <IconButton
                 size="large"
@@ -106,18 +99,16 @@ function StaffDashBoard() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>
-                  <Link  style={{textDecoration:'none',color:'black'}} to='/staff/myprofile'>My Profile</Link>
+                  <Link  style={{textDecoration:'none',color:'black'}} to=''>My Profile</Link>
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
-          )}
         </Toolbar>
       </AppBar>
 
       </Box>
       <aside className="sidebar">
-      
       <Box
             sx={{
               background: "#2C364C",
@@ -128,7 +119,7 @@ function StaffDashBoard() {
               <List sx={{ color: "white",mt:2 }}>
                 {/* Staff Home Button */}
                 <Link
-                  to="/staff"
+                  to=""
                   style={{ color: "white", textDecoration: "none" }}
                 >
                   <ListItem disablePadding onClick={closeMenu}>
@@ -142,7 +133,7 @@ function StaffDashBoard() {
                     </ListItemButton>
                   </ListItem>
                 </Link>
-
+                
                 {/* Add Student Button */}
                 <Link
                   to="/staff/newstudent"
@@ -154,6 +145,22 @@ function StaffDashBoard() {
                       </ListItemIcon>
                       <Typography sx={{ fontFamily: "Nunito" }}>
                         Add New Student
+                      </Typography>
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+
+                {/* View Student Button */}
+                <Link
+                  to="/staff/viewstudent"
+                  style={{ color: "white", textDecoration: "none" }}>
+                  <ListItem disablePadding onClick={closeMenu}>
+                    <ListItemButton sx={{ p: 1, py: 2 }}>
+                      <ListItemIcon>
+                        <SchoolIcon sx={{ color: "white" }} />
+                      </ListItemIcon>
+                      <Typography sx={{ fontFamily: "Nunito" }}>
+                        View Student
                       </Typography>
                     </ListItemButton>
                   </ListItem>

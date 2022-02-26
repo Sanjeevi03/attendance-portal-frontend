@@ -23,7 +23,7 @@ function Login() {
     setExpanded(newExpanded ? panel : false);
   };
   // admin login
-  const [state,setState] = useState({adminusername:'',adminpassword:'',staffid:'',staffpassword:''})
+  const [state,setState] = useState({adminusername:'',adminpassword:'',staffid:'',staffpassword:'',regno:'',studentpassword:''})
   const handleLoginChange = (e)=>{
     setState({...state,[e.target.name]:e.target.value})
   }
@@ -59,6 +59,23 @@ function Login() {
     }
      catch(err){
         toast.error("Invalid Staff ID or Password")
+      }
+  }
+  // axios to student login
+  const handleStudentLogin = async (e) =>{
+    e.preventDefault();
+    try{
+      const response = await axios.post('http://localhost:8000/studentlogin',{
+        regno:state.regno,
+        studentpassword:state.studentpassword
+      })
+      if(response.data){
+        await localStorage.setItem("stud-token",response.data);
+        navigate('/student')
+      }
+    }
+     catch(err){
+        toast.error("Invalid Regsiter No or Password")
       }
   }
   return (
@@ -118,9 +135,9 @@ function Login() {
             <Typography sx={{color:'white',fontWeight:'600',mx:13,fontFamily:'Ubuntu',my:0.5}}>Student Login</Typography>
           </AccordionSummary>
           <AccordionDetails sx={{mx:7,mt:2}}>
-            <TextField label='Username' type='text' sx={{m:1,width:'230px'}}/> <br />
-            <TextField label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
-            <Button variant="contained" sx={{mx:9,my:1,px:4}}>Login</Button>
+            <TextField name="regno" value={state.regno} onChange={handleLoginChange} label='Register No' type='text' sx={{m:1,width:'230px'}}/> <br />
+            <TextField name="studentpassword" value={state.studentpassword} onChange={handleLoginChange} label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
+            <Button onClick={handleStudentLogin} variant="contained" sx={{mx:9,my:1,px:4}}>Login</Button>
           </AccordionDetails>
         </Accordion>
       </Box>
