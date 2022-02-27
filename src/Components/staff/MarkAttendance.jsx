@@ -15,11 +15,9 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
-import { Button, TableHead, Typography } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import {  TableHead, Typography } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
-import Swal from "sweetalert2";
 
 function TablePaginationActions(props) {
   const theme = useTheme();
