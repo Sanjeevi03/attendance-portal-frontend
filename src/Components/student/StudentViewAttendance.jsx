@@ -91,7 +91,7 @@ export default function CustomPaginationActionsTable() {
   const [state,setState] = React.useState([])
   React.useEffect(()=>{
     const loadData = async ()=>{
-      const response  = await axios.get('https://attendance-portal-backend.herokuapp.com/attendance')
+      const response  = await axios.get('https://attendance-portal-backend.herokuapp.com/myattendance')
       setState(response.data)
     }
     loadData();
