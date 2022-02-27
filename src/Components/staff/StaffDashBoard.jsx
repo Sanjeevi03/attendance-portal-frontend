@@ -247,7 +247,7 @@ function StaffDashBoard() {
           </Box>
       </aside>
       <div onClick={closeMenu} className="sidebar-close-button ">
-      <Box  sx={{height:'93vh',backgroundColor:'#f0f2f5'}}>
+      <Box  sx={{minHeight:'770px',backgroundColor:'#f0f2f5'}}>
         <Outlet />
       </Box>
       </div>

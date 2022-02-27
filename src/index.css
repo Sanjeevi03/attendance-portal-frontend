@@ -84,7 +84,7 @@ code {
   transition: all 0.8s;
   transform: translateX(-30rem);
   width: 15.5rem;
-  height: 100%;
+  height:100%;
 }
 .sidebar.open {
   transform: translateX(0);
@@ -225,4 +225,19 @@ code {
 }
 textarea{
   border-radius: 4px;
+}
+
+.present{
+  width: 100px;
+  padding:5px 10px;
+  border-radius: 5px;
+  background-color: #20994c;
+  color:white;
+}
+.absent{
+  width: 100px;
+  padding:5px 10px;
+  border-radius: 5px;
+  background-color:#e22b34;
+  color:white;
 }

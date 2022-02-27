@@ -168,7 +168,7 @@ const handleDelete = async(regno,name)=>{
             <TableRow key={i}>
               <TableCell>{i+1}</TableCell>
                <TableCell >{row.regno}</TableCell>
-               <TableCell >{row.studentname}</TableCell>
+               <TableCell >{(row.studentname).toUpperCase()}</TableCell>
                <TableCell >{row.studentemail}</TableCell>
                <TableCell >{row.studentgender}</TableCell>
                <TableCell >{row.studentdob}</TableCell>

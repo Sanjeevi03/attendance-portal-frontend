@@ -1,8 +1,15 @@
-import { Box, Typography } from '@mui/material';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-
-function ViewAttendance() {
+import { Box, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import axios from "axios";
+function ViewStaff() {
+  
   const [data,setData] = useState([])
   useEffect(()=>{
     const loadData = async()=>{
@@ -13,28 +20,43 @@ function ViewAttendance() {
     loadData();
   },[])
 
-  var k=[]
-  var v=[]
-  data.map(i=>i !== '_id'?k.push(Object.keys(i)):null)
-  data.map(i=>v.push(Object.values(i)))
-  console.log(k);
-  // console.log(v);
-  // {JSON.stringify(data)}
-
+  var a=[]
+  var b=[]
+  data.map(i=>a.push(JSON.stringify(i)))
+  a.map(i=>b.push(JSON.parse(i)))
+  var final=[]
+  b.map(i=>delete i._id ? final.push(i):null )
+  console.log(final);
   return (
-    <Box sx={{ width: "100%" }}>
-        <Typography sx={{ textAlign: "center", fontFamily: "Ubuntu", mb: 2,pt:4 }}>
-          Viewing Attendance
+    <>
+      <Box sx={{ width: "100%", pt:6,pb: 4 }}>
+        <Typography sx={{ textAlign: "center", fontFamily: "Ubuntu", mb: 2 }}>
+          Attendance
         </Typography>
         <Box sx={{ mx: 2, display: "flex", justifyContent: "center" }}>
-          {data.map((i,j)=>
-            <div>
-              <span>{i.date} </span> 
-            </div>
-            )}
+          <Paper sx={{ width: "100%", overflow: "hidden" }}>
+            <TableContainer sx={{ maxHeight: 587 }}>
+              <Table >
+                <TableHead>
+                  <TableRow>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {final.map((i, j) => (
+                    <TableRow key={j}>
+                      <TableCell>{JSON.stringify(i)}</TableCell>
+                      
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+          </Paper>
         </Box>
       </Box>
-  )
+    </>
+  );
 }
 
-export default ViewAttendance
+export default ViewStaff;

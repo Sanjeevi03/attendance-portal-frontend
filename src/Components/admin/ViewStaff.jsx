@@ -29,7 +29,7 @@ function ViewStaff() {
         <Box sx={{ mx: 2, display: "flex", justifyContent: "center" }}>
           <Paper sx={{ width: "100%", overflow: "hidden" }}>
             <TableContainer sx={{ maxHeight: 587 }}>
-              <Table stickyHeader>
+              <Table >
                 <TableHead>
                   <TableRow>
                     <TableCell sx={{ fontWeight: "600" }}>S.No</TableCell>

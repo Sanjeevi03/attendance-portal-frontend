@@ -4,11 +4,9 @@ import AddNewStaff from "./Components/admin/AddNewStaff";
 import AdminChangePsw from "./Components/admin/AdminChangePsw";
 import AdminDashBoard from "./Components/admin/AdminDashBoard";
 import AdminHome from "./Components/admin/AdminHome";
-import AdminViewAttendance from "./Components/admin/AdminViewAttendance";
 import ViewStaff from "./Components/admin/ViewStaff";
 import Login from "./Components/Login";
 import StaffDashBoard from "./Components/staff/StaffDashBoard";
-import StaffHome from "./Components/staff/StaffHome";
 import AddStudent from "./Components/staff/AddStudent";
 import MarkAttendance from "./Components/staff/MarkAttendance";
 import ViewAttendance from "./Components/staff/ViewAttendance";
@@ -30,7 +28,6 @@ function App() {
         <Route path="/admin" element={<AdminDashBoard />}>
           <Route path="" element={<AdminHome />} />
           <Route path="/admin/newstaff" element={<AddNewStaff />} />
-          <Route path="/admin/adminview" element={<AdminViewAttendance />} />
           <Route path="/admin/adminpsw" element={<AdminChangePsw />} />
           <Route path="/admin/viewstaff" element={<ViewStaff />} />
         </Route>

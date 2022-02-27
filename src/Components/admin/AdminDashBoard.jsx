@@ -14,7 +14,6 @@ import ClassIcon from "@mui/icons-material/Class";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { decodeToken } from "react-jwt";
-import EventNoteIcon from "@mui/icons-material/EventNote";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -116,23 +115,6 @@ function AdminDashBoard() {
                     </ListItemIcon>
                     <Typography sx={{ fontFamily: "Nunito" }}>
                       View all Staff
-                    </Typography>
-                  </ListItemButton>
-                </ListItem>
-              </Link>
-
-              {/* Admin View Attendance Button */}
-              <Link
-                to="/admin/adminview"
-                style={{ color: "white", textDecoration: "none" }}
-              >
-                <ListItem disablePadding onClick={closeMenu}>
-                  <ListItemButton sx={{ p: 1, py: 2 }}>
-                    <ListItemIcon>
-                      <EventNoteIcon sx={{ color: "white" }} />
-                    </ListItemIcon>
-                    <Typography sx={{ fontFamily: "Nunito" }}>
-                      View Attendance
                     </Typography>
                   </ListItemButton>
                 </ListItem>

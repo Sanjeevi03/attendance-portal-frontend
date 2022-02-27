@@ -100,30 +100,7 @@ export default function CustomPaginationActionsTable() {
     };
     loadData();
   }, [data]);
-  // deleting
-  const handleDelete = async (regno, name) => {
-    Swal.fire({
-      title: `Are you sure to delete ${name} ?`,
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        //  try{
-        //      axios.delete('http://localhost:8000/delete',{headers: {
-        //        regno:regno
-        //      }})
-        //  }
-        //  catch(err){
-        //     toast.error("Try Again")
-        //  }
-        Swal.fire("Deleted!", `${name} has deleted.`, "success");
-      }
-    });
-  };
+  
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -146,6 +123,7 @@ export default function CustomPaginationActionsTable() {
   const handleSubmit = async()=>{
     await axios.post('http://localhost:8000/markattendance',value)
     setValue({date:''})
+    toast.success("Attendance Marked")
   }
   return (
     <>

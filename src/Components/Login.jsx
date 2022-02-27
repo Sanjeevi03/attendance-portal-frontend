@@ -107,8 +107,11 @@ function Login() {
             <Typography sx={{color:'white',fontWeight:'600',mx:14,fontFamily:'Ubuntu',my:0.5}}>Admin Login</Typography>
           </AccordionSummary>
           <AccordionDetails sx={{mx:7,mt:2}}>
-            <TextField name="adminusername" value={state.adminusername} onChange={handleLoginChange}label='Username' type='text' sx={{m:1,width:'230px'}}/> <br />
-            <TextField name="adminpassword" value={state.adminpassword} onChange={handleLoginChange}label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
+            <span>Credentials to Login</span> <br />
+            <span>Username: admin</span> <br />
+            <span>Password: admin</span>
+            <TextField name="adminusername" value={state.adminusername} onChange={handleLoginChange}label='Username' type='text' sx={{m:1,width:'230px'}}  autoComplete="off"/> <br />
+            <TextField name="adminpassword" value={state.adminpassword} onChange={handleLoginChange}label='Password' type='password' sx={{m:1,width:'230px'}} autoComplete="off"/> <br />
             <Button onClick={handleAdminLogin} variant="contained" sx={{mx:9,my:1,px:4}}>Login</Button>
           </AccordionDetails>
         </Accordion>
@@ -121,8 +124,8 @@ function Login() {
             <Typography sx={{color:'white',fontWeight:'600',mx:14,fontFamily:'Ubuntu',my:0.5}}>Staff Login</Typography>
           </AccordionSummary>
           <AccordionDetails sx={{mx:7,mt:2}}>
-            <TextField name="staffid" value={state.staffid} onChange={handleLoginChange} label='Staff ID' type='text' sx={{m:1,width:'230px'}}/> <br />
-            <TextField name="staffpassword" value={state.staffpassword} onChange={handleLoginChange} label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
+            <TextField name="staffid" value={state.staffid} onChange={handleLoginChange} label='Staff ID' type='text' sx={{m:1,width:'230px'}} autoComplete="off"/> <br />
+            <TextField name="staffpassword" value={state.staffpassword} onChange={handleLoginChange} label='Password' type='password' sx={{m:1,width:'230px'}} autoComplete="off" /> <br />
             <Button onClick={handleStaffLogin} variant="contained" sx={{mx:9,my:1,px:4}}>Login</Button>
           </AccordionDetails>
         </Accordion>
@@ -135,8 +138,8 @@ function Login() {
             <Typography sx={{color:'white',fontWeight:'600',mx:13,fontFamily:'Ubuntu',my:0.5}}>Student Login</Typography>
           </AccordionSummary>
           <AccordionDetails sx={{mx:7,mt:2}}>
-            <TextField name="regno" value={state.regno} onChange={handleLoginChange} label='Register No' type='text' sx={{m:1,width:'230px'}}/> <br />
-            <TextField name="studentpassword" value={state.studentpassword} onChange={handleLoginChange} label='Password' type='password' sx={{m:1,width:'230px'}} /> <br />
+            <TextField name="regno" value={state.regno} onChange={handleLoginChange} label='Register No' type='text' sx={{m:1,width:'230px'}} autoComplete="off"/> <br />
+            <TextField name="studentpassword" value={state.studentpassword} onChange={handleLoginChange} label='Password' type='password' sx={{m:1,width:'230px'}} autoComplete="off"/> <br />
             <Button onClick={handleStudentLogin} variant="contained" sx={{mx:9,my:1,px:4}}>Login</Button>
           </AccordionDetails>
         </Accordion>
