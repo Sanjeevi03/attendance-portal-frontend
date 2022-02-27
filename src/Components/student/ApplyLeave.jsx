@@ -15,7 +15,7 @@ function ApplyLeave() {
    }
    const handleSubmit = async ()=>{
       console.log(state);
-      await axios.post('http://localhost:8000/applyleave',state)
+      await axios.post('https://attendance-portal-backend.herokuapp.com/applyleave',state)
       setState({fromdate:'',todate:'',message:'',regno:'',name:''})
       toast.success("Leave Applied")
 

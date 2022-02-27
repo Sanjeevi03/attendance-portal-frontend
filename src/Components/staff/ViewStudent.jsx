@@ -90,7 +90,7 @@ export default function CustomPaginationActionsTable() {
    const [data,setData] = React.useState([])
    React.useEffect(()=>{
    const loadData = async()=>{
-      const response = await axios.get('http://localhost:8000/viewstudent')
+      const response = await axios.get('https://attendance-portal-backend.herokuapp.com/viewstudent')
       setData(response.data)
    }
    loadData()
@@ -108,7 +108,7 @@ const handleDelete = async(regno,name)=>{
     }).then((result) => {
       if (result.isConfirmed) {
          try{
-             axios.delete('http://localhost:8000/delete',{headers: {
+             axios.delete('https://attendance-portal-backend.herokuapp.com/delete',{headers: {
                regno:regno   
              }})
          }

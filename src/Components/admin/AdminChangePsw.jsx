@@ -20,7 +20,7 @@ function AdminChangePsw() {
   //onclick
   const handleSubmit = async ()=>{
     try{
-      await axios.put('http://localhost:8000/adminchangepsw',{
+      await axios.put('https://attendance-portal-backend.herokuapp.com/adminchangepsw',{
       old:state.old,new:state.new,username:decodedToken.username
     })
     setState({old:'',new:''})

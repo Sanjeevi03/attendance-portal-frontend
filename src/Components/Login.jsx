@@ -31,7 +31,7 @@ function Login() {
   const handleAdminLogin = async (e) =>{
     e.preventDefault();
     try{
-      const response = await axios.post('http://localhost:8000/adminlogin',{
+      const response = await axios.post('https://attendance-portal-backend.herokuapp.com/adminlogin',{
         username:state.adminusername,
         password:state.adminpassword
       })
@@ -48,7 +48,7 @@ function Login() {
   const handleStaffLogin = async (e) =>{
     e.preventDefault();
     try{
-      const response = await axios.post('http://localhost:8000/stafflogin',{
+      const response = await axios.post('https://attendance-portal-backend.herokuapp.com/stafflogin',{
         staffid:state.staffid,
         staffpassword:state.staffpassword
       })
@@ -65,7 +65,7 @@ function Login() {
   const handleStudentLogin = async (e) =>{
     e.preventDefault();
     try{
-      const response = await axios.post('http://localhost:8000/studentlogin',{
+      const response = await axios.post('https://attendance-portal-backend.herokuapp.com/studentlogin',{
         regno:state.regno,
         studentpassword:state.studentpassword
       })

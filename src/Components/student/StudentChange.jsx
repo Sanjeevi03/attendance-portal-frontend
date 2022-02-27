@@ -18,7 +18,7 @@ function StudentChange() {
   //onclick
   const handleSubmit = async ()=>{
     try{
-      await axios.put('http://localhost:8000/studentchangepsw',{
+      await axios.put('https://attendance-portal-backend.herokuapp.com/studentchangepsw',{
       old:state.old,new:state.new,regno:decodedToken.regno
     })
     setState({old:'',new:''})

@@ -21,7 +21,7 @@ function AddNewStaff() {
   const handleSubmit = async(e)=>{  
     e.preventDefault()
    try{
-    await axios.post('http://localhost:8000/addstaff',{
+    await axios.post('https://attendance-portal-backend.herokuapp.com/addstaff',{
       staffid:staffDetail.staffID,
       staffname:staffDetail.staffName,
       staffemail:staffDetail.staffEmail,

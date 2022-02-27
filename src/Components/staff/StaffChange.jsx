@@ -19,7 +19,7 @@ function StaffChange() {
   //onclick
   const handleSubmit = async ()=>{
     try{
-      await axios.put('http://localhost:8000/staffchangepsw',{
+      await axios.put('https://attendance-portal-backend.herokuapp.com/staffchangepsw',{
       old:state.old,new:state.new,staffid:decodedToken.staffid
     })
     setState({old:'',new:''})

@@ -121,7 +121,7 @@ export default function CustomPaginationActionsTable() {
       setValue({...value,[e.target.name]:e.target.value})
   }
   const handleSubmit = async()=>{
-    await axios.post('http://localhost:8000/markattendance',value)
+    await axios.post('https://attendance-portal-backend.herokuapp.com/markattendance',value)
     setValue({date:''})
     toast.success("Attendance Marked")
   }

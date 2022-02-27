@@ -14,7 +14,7 @@ function ViewStaff() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const loadData = async () => {
-      let response = await axios.get("http://localhost:8000/viewstaff");
+      let response = await axios.get("https://attendance-portal-backend.herokuapp.com/viewstaff");
       setData(response.data);
     };
     loadData();

@@ -7,7 +7,7 @@ function AdminHome() {
   const [staffData, setStaffData] = useState([]);
   useEffect(() => {
     const loadData = async () => {
-      let response = await axios.get("http://localhost:8000/countstaff");
+      let response = await axios.get("https://attendance-portal-backend.herokuapp.com/countstaff");
       setStaffData(response.data);
     };
     loadData();
@@ -16,17 +16,8 @@ function AdminHome() {
   const [studData, setStudData] = useState([]);
   useEffect(() => {
     const loadData = async () => {
-      let response = await axios.get("http://localhost:8000/countstudent");
+      let response = await axios.get("https://attendance-portal-backend.herokuapp.com/countstudent");
       setStudData(response.data);
-    };
-    loadData();
-  }, []);
-  // View attendance
-  const [atten,setAtten] = useState([]);
-  useEffect(() => {
-    const loadData = async () => {
-      let response = await axios.get("http://localhost:8000");
-      setAtten(response.data);
     };
     loadData();
   }, []);

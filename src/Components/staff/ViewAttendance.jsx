@@ -13,7 +13,7 @@ function ViewStaff() {
   const [data,setData] = useState([])
   useEffect(()=>{
     const loadData = async()=>{
-      const response  = await axios.get('http://localhost:8000/viewattendance')
+      const response  = await axios.get('https://attendance-portal-backend.herokuapp.com/viewattendance')
       setData(response.data)
 
     }
